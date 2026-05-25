@@ -18,6 +18,11 @@ class AuthController extends Controller
     {
         return view('auth.login');
     }
+
+    public function register()
+    {
+        return view('auth.register');
+    }
     
     public function postlogin(Request $request): RedirectResponse
     {
@@ -30,7 +35,7 @@ class AuthController extends Controller
         if (Auth::attempt($credentials, $remember)) {
             $request->session()->regenerate();
 
-            $response = redirect('/');
+            $response = redirect('/dashboard')->with('success', 'Login berhasil.');
             if($remember){
                 $response->withCookie(cookie()->make('remember_email', $request->email, 60 * 24 * 7))
                         ->withCookie(cookie()->make('remember_password', $request->password, 60 * 24 * 7));// Menyimpan cookie selama 30 hari
