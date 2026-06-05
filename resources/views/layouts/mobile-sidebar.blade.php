@@ -30,14 +30,16 @@
           <ul class="mt-6">
             <li class="relative px-6 py-3">
               <!-- Active items have the snippet below -->
-              <span
-                        class="absolute inset-y-0 left-0 w-1 bg-yellow-400 rounded-tr-lg rounded-br-lg"
-                        aria-hidden="true"
-                      ></span>
+              @if(request()->is('dashboard*'))
+              <span class="absolute inset-y-0 left-0 w-1 bg-yellow-400 rounded-tr-lg rounded-br-lg" aria-hidden="true"></span>
+              @endif
               <!-- Add this classes to an active anchor (a tag) -->
               <!-- text-gray-800 dark:text-gray-100 -->
-              <a class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
-                href="../dashboard/dashboard.php">
+              <a class="@if(request()->is('dashboard*'))
+                text-gray-800 dark:text-yellow-300
+                @endif
+                inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
+                href="{{ route('dashboard.index') }}">
                 <i class="fas fa-home"></i>
                 <span class="ml-4">Dashboard</span>
               </a>
@@ -45,71 +47,81 @@
             <hr>
             <li class="relative px-6 py-3">
               <!-- Active items have the snippet below -->
-              <span
-                        class="absolute inset-y-0 left-0 w-1 bg-yellow-400 rounded-tr-lg rounded-br-lg"
-                        aria-hidden="true"
-                      ></span>
+              @if(request()->is('meja*'))
+              <span class="absolute inset-y-0 left-0 w-1 bg-yellow-400 rounded-tr-lg rounded-br-lg" aria-hidden="true"></span>
+              @endif
               <!-- Add this classes to an active anchor (a tag) -->
               <!-- text-gray-800 dark:text-gray-100 -->
-              <a class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
-                href="../meja/meja.php">
+              <a class="@if(request()->is('meja*'))
+                text-gray-800 dark:text-yellow-300
+                @endif
+                inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
+                href="{{ route('meja.index') }}">
                 <i class="fas fa-th-large"></i>
                 <span class="ml-4">Data Meja</span>
               </a>
             </li>
             <li class="relative px-6 py-3">
               <!-- Active items have the snippet below -->
-              <span
-                        class="absolute inset-y-0 left-0 w-1 bg-yellow-400 rounded-tr-lg rounded-br-lg"
-                        aria-hidden="true"
-                      ></span>
+              @if(request()->is('menu*'))
+              <span class="absolute inset-y-0 left-0 w-1 bg-yellow-400 rounded-tr-lg rounded-br-lg" aria-hidden="true"></span>
+              @endif
               <!-- Add this classes to an active anchor (a tag) -->
               <!-- text-gray-800 dark:text-gray-100 -->
-              <a class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
-                href="../menu/menu.php">
+              <a class="@if(request()->is('menu*'))
+                text-gray-800 dark:text-yellow-300
+                @endif
+                inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
+                href="{{ route('menu.index') }}">
                 <i class="fas fa-utensils"></i>
                 <span class="ml-4">Data Menu</span>
               </a>
             </li>
               <li class="relative px-6 py-3">
                 <!-- Active items have the snippet below -->
-                <span
-                        class="absolute inset-y-0 left-0 w-1 bg-yellow-400 rounded-tr-lg rounded-br-lg"
-                        aria-hidden="true"
-                      ></span>
-              <!-- Add this classes to an active anchor (a tag) -->
-              <!-- text-gray-800 dark:text-gray-100 -->
-              <a class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
-              href="../pesanan/pesanan.php">
-              <i class="fas fa-shopping-cart"></i>
-              <span class="ml-4">Pesanan</span>
-            </a>
+                @if(request()->is('pesanan*'))
+                <span class="absolute inset-y-0 left-0 w-1 bg-yellow-400 rounded-tr-lg rounded-br-lg" aria-hidden="true"></span>
+                @endif
+                <!-- Add this classes to an active anchor (a tag) -->
+                <!-- text-gray-800 dark:text-gray-100 -->
+                <a class="@if(request()->is('pesanan*'))
+                  text-gray-800 dark:text-yellow-300
+                  @endif
+                  inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
+                  href="{{ route('pesanan.index') }}">
+                  <i class="fas fa-shopping-cart"></i>
+                  <span class="ml-4">Pesanan</span>
+                </a>
             </li> 
             <hr>
             <li class="relative px-6 py-3">
               <!-- Active items have the snippet below -->
-              <span
-                        class="absolute inset-y-0 left-0 w-1 bg-yellow-400 rounded-tr-lg rounded-br-lg"
-                        aria-hidden="true"
-                      ></span>
+              @if(request()->is('reservasi*'))
+              <span class="absolute inset-y-0 left-0 w-1 bg-yellow-400 rounded-tr-lg rounded-br-lg" aria-hidden="true"></span>
+              @endif
               <!-- Add this classes to an active anchor (a tag) -->
               <!-- text-gray-800 dark:text-gray-100 -->
-              <a class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
-                href="../reservasi/reservasi.php">
+              <a class="@if(request()->is('reservasi*'))
+                text-gray-800 dark:text-yellow-300
+                @endif
+                inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
+                href="{{ route('reservasi.index') }}">
                 <i class="fas fa-edit"></i>
                 <span class="ml-4">Reservasi</span>
               </a>
             </li>
             <li class="relative px-6 py-3">
               <!-- Active items have the snippet below -->
-              <span
-                        class="absolute inset-y-0 left-0 w-1 bg-yellow-400 rounded-tr-lg rounded-br-lg"
-                        aria-hidden="true"
-                      ></span>
+              @if(request()->is('reservasi-saya*'))
+              <span class="absolute inset-y-0 left-0 w-1 bg-yellow-400 rounded-tr-lg rounded-br-lg" aria-hidden="true"></span>
+              @endif
               <!-- Add this classes to an active anchor (a tag) -->
               <!-- text-gray-800 dark:text-gray-100 -->
-              <a class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
-                href="../reservasi/reservasiSaya.php">
+              <a class="@if(request()->is('reservasi-saya*'))
+                text-gray-800 dark:text-yellow-300
+                @endif
+                inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
+                href="{{ route('reservasi-saya.index') }}">
                 <i class="fas fa-ticket-alt"></i>
                 <span class="ml-4">Reservasi Saya</span>
               </a>
@@ -117,14 +129,16 @@
             <hr>
             <li class="relative px-6 py-3">
               <!-- Active items have the snippet below -->
-              <span
-                        class="absolute inset-y-0 left-0 w-1 bg-yellow-400 rounded-tr-lg rounded-br-lg"
-                        aria-hidden="true"
-                      ></span>
+              @if(request()->is('riwayat*'))
+              <span class="absolute inset-y-0 left-0 w-1 bg-yellow-400 rounded-tr-lg rounded-br-lg" aria-hidden="true"></span>
+              @endif
               <!-- Add this classes to an active anchor (a tag) -->
               <!-- text-gray-800 dark:text-gray-100 -->
-              <a class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
-                href="../riwayat/riwayat.php">
+              <a class="@if(request()->is('riwayat*'))
+                text-gray-800 dark:text-yellow-300
+                @endif
+                inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
+                href="{{ route('riwayat.index') }}">
                 <i class="fas fa-history"></i>
                 <span class="ml-4">Riwayat</span>
               </a>

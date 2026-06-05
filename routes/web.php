@@ -19,6 +19,7 @@ Route::get('/', function () {
 Route::post('/postlogin', [AuthController::class, 'postlogin'])->name('postlogin');
 Route::get('/login', [AuthController::class, 'index']);
 Route::get('/register', [AuthController::class, 'register']);
+Route::post('/registeruser', [AuthController::class, 'create']);
 Route::get('/logout', [AuthController::class, 'logout']);
 
 Route::resource('dashboard', DashboardController::class);

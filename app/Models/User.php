@@ -9,10 +9,12 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class User extends Authenticatable
 {
+    protected $table = 'users';
+
     protected $fillable = [
         'nama_lengkap',
-        'username',
         'email',
+        'username',
         'password',
         'role',
     ];
@@ -27,5 +29,18 @@ class User extends Authenticatable
         return [
             'password' => 'hashed',
         ];
+    }
+
+    public function reservasis(): HasMany
+    {
+        return $this->hasMany(Reservasi::class, 'id_pelanggan', 'id');
+    }
+
+    /**
+     * Relasi ke Pembayaran: Seorang kasir bisa melayani banyak transaksi pelunasan pembayaran
+     */
+    public function pembayarans(): HasMany
+    {
+        return $this->hasMany(Pembayaran::class, 'id_kasir', 'id');
     }
 }

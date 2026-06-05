@@ -165,7 +165,7 @@
                   aria-label="Account"
                   aria-haspopup="true"
                 >
-                <p class="text-yellow-300 font-semibold w-auto">Kukuh Wisanggeni</i></p>
+                <p class="text-yellow-300 font-semibold w-auto">{{ auth()->user()->nama_lengkap }}</i></p>
                   <!-- <img
                     class="object-cover w-8 h-8 rounded-full"
                     src="https://images.unsplash.com/photo-1502378735452-bc7d86632805?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=200&fit=max&s=aa3a807e1bbdfd4364d1f449eaa96d82"
@@ -231,7 +231,7 @@
                     <li class="flex">
                       <a
                         class="inline-flex items-center w-full px-2 py-1 text-sm font-semibold transition-colors duration-150 rounded-md hover:bg-red-500 hover:text-white dark:hover:bg-red-500 dark:hover:text-white"
-                        href="../controllers/logout.php"
+                        href="/logout"
                       >
                         <svg
                           class="w-4 h-4 mr-3"

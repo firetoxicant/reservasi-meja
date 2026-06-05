@@ -35,7 +35,7 @@ class AuthController extends Controller
         if (Auth::attempt($credentials, $remember)) {
             $request->session()->regenerate();
 
-            $response = redirect('/dashboard')->with('success', 'Login berhasil.');
+            $response = redirect('/dashboard')->with('success', 'Selamat datang ' . Auth::user()->nama_lengkap . '. Kamu login sebagai ' . Auth::user()->role . '.');
             if($remember){
                 $response->withCookie(cookie()->make('remember_email', $request->email, 60 * 24 * 7))
                         ->withCookie(cookie()->make('remember_password', $request->password, 60 * 24 * 7));// Menyimpan cookie selama 30 hari
@@ -47,26 +47,46 @@ class AuthController extends Controller
         }else{
             return back()->with('error', 'Email atau password salah.');
         }
-            return $response;
-
-        return back()->withErrors([
-            'email' => 'Email tidak ditemukan.',
-        ]);
+        return $response;
     }
 
     public function logout(): RedirectResponse
     {
         Auth::logout();
-        return redirect('/login');
+        return redirect('/login')->with('success', 'Logout berhasil.');
     }
 
 
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function create(Request $request): RedirectResponse
     {
-        //
+        // 1. Jalankan Validasi (Jika gagal, otomatis return kembalikan pesan error ke view)
+        $validatedData = $request->validate([
+            'nama_lengkap' => 'required|string|max:30',
+            'email'        => 'required|string|email|max:50|unique:users,email',
+            'username'     => 'required|string|max:15|unique:users,username', // Disarankan unik
+            'password'     => 'required|string|min:6',
+            'role'         => 'nullable|in:admin,kasir,pelanggan',
+        ]);
+
+        try {
+            // 2. Set Nilai Default untuk Role jika kosong atau tidak diinputkan
+            $validatedData['role'] = $request->filled('role') ? $request->role : 'pelanggan';
+
+            // 3. Enkripsi Password
+            $validatedData['password'] = Hash::make($request->password);
+
+            // 4. Daftarkan User ke Database
+            User::create($validatedData);
+
+            return redirect('/login')->with('success', 'Akun berhasil dibuat! Silakan login.');
+
+        } catch (\Exception $e) {
+            // Jika terjadi error tidak terduga pada database (misal database mati/putus koneksi)
+            return back()->withInput()->with('error', 'Terjadi kesalahan sistem: ' . $e->getMessage());
+        }
     }
 
     /**

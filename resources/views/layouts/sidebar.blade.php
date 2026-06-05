@@ -13,7 +13,7 @@
                 <!-- Add this classes to an active anchor (a tag) -->
                 <!-- text-gray-800 dark:text-gray-100 -->
                 <a class="@if(request()->is('dashboard*'))
-                text-gray-800 dark:text-gray-100
+                text-gray-800 dark:text-yellow-300
                 @endif
                 inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
                     href="{{ route('dashboard.index') }}">
@@ -31,7 +31,7 @@
                 <!-- Add this classes to an active anchor (a tag) -->
                 <!-- text-gray-800 dark:text-gray-100 -->
                 <a class="@if(request()->is('meja*'))
-                text-gray-800 dark:text-gray-100
+                text-gray-800 dark:text-yellow-300
                 @endif
                 inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
                     href="{{ route('meja.index') }}">
@@ -48,7 +48,7 @@
                 <!-- Add this classes to an active anchor (a tag) -->
                 <!-- text-gray-800 dark:text-gray-100 -->
                 <a class="@if(request()->is('menu*'))
-                text-gray-800 dark:text-gray-100
+                text-gray-800 dark:text-yellow-300
                 @endif
                 inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
                     href="{{ route('menu.index') }}">
@@ -65,7 +65,7 @@
                 <!-- Add this classes to an active anchor (a tag) -->
                 <!-- text-gray-800 dark:text-gray-100 -->
                 <a class="@if(request()->is('pesanan*'))
-                text-gray-800 dark:text-gray-100
+                text-gray-800 dark:text-yellow-300
                 @endif
                 inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
                     href="{{ route('pesanan.index') }}">
@@ -83,7 +83,7 @@
                 <!-- Add this classes to an active anchor (a tag) -->
                 <!-- text-gray-800 dark:text-gray-100 -->
                 <a class="@if(request()->is('reservasi*'))
-                text-gray-800 dark:text-gray-100
+                text-gray-800 dark:text-yellow-300
                 @endif
                 inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
                     href="{{ route('reservasi.index') }}">
@@ -100,7 +100,7 @@
                 <!-- Add this classes to an active anchor (a tag) -->
                 <!-- text-gray-800 dark:text-gray-100 -->
                 <a class="@if(request()->is('reservasi-saya*'))
-                text-gray-800 dark:text-gray-100
+                text-gray-800 dark:text-yellow-300
                 @endif
                 inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
                     href="{{ route('reservasi-saya.index') }}">
@@ -118,7 +118,7 @@
                 <!-- Add this classes to an active anchor (a tag) -->
                 <!-- text-gray-800 dark:text-gray-100 -->
                 <a class="@if(request()->is('riwayat*'))
-                text-gray-800 dark:text-gray-100
+                text-gray-800 dark:text-yellow-300
                 @endif
                 inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
                     href="{{ route('riwayat.index') }}">

@@ -14,13 +14,40 @@ class UserSeeder extends Seeder
      */
     public function run(): void
     {
-        // Data Admin
+        // 1. Data Admin
         User::create([
-            'nama_lengkap' => 'Administrator Sistem',
-            'username'     => 'admin',
+            'nama_lengkap' => 'Edie Feeding Frenzy',
+            'username'     => 'edie',
             'email'        => 'admin@gmail.com',
-            'password'     => Hash::make('admin123'), // Password: admin123
+            'password'     => Hash::make('admin123'), // Anda bisa mengganti password default ini
             'role'         => 'admin',
+        ]);
+
+        // 2. Data Kasir
+        User::create([
+            'nama_lengkap' => 'Raihan Wijayadi',
+            'username'     => 'raihanwijay',
+            'email'        => 'kasir@gmail.com',
+            'password'     => Hash::make('kasir123'),
+            'role'         => 'kasir',
+        ]);
+
+        // 3. Data Pelanggan 1
+        User::create([
+            'nama_lengkap' => 'Krisna Jauhari',
+            'username'     => 'krisnajauhara',
+            'email'        => 'pelanggan@gmail.com',
+            'password'     => Hash::make('pelanggan123'),
+            'role'         => 'pelanggan',
+        ]);
+
+        // 4. Data Pelanggan 2
+        User::create([
+            'nama_lengkap' => 'Arif Gedangan',
+            'username'     => 'Arif Tuwir',
+            'email'        => 'pelanggan2@gmail.com',
+            'password'     => Hash::make('pelanggan123'),
+            'role'         => 'pelanggan',
         ]);
     }
 }

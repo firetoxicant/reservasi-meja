@@ -1,5 +1,5 @@
 <?php
-
+use App\Models\DBLogActivities;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -11,12 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('mejas', function (Blueprint $table) {
+        Schema::create(DBLogActivities::TABLE_NAME, function (Blueprint $table) {
             $table->id();
-            $table->string('nama_meja', 20);
-            $table->integer('kapasitas_meja');
-            $table->string('foto')->nullable();
-            $table->enum('status', ['tersedia', 'tidak tersedia']);
+            $table->string(DBLogActivities::ACTION_COLUMN);
+            $table->text(DBLogActivities::DESC_COLUMN);
             $table->timestamps();
         });
     }
@@ -26,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('mejas');
+        Schema::dropIfExists('DBLogActivities::TABLE_NAME');
     }
 };

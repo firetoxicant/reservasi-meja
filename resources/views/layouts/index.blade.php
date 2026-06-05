@@ -11,11 +11,13 @@
     />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="../../assets/css/tailwind.output.css" />
+    <link rel="stylesheet" href="{{asset('assets/izitoast/css/iziToast.min.css')}}">
     <script
       src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js"
       defer
     ></script>
     <script src="../../assets/js/init-alpine.js"></script>
+    <script src="{{asset('assets/izitoast/js/iziToast.min.js')}}"></script>
   </head>
   <body>
     <div
@@ -39,4 +41,21 @@
             </h2>
           </div> -->
         </main>
+        @if(session('success'))
+        <script>
+          iziToast.success({
+          title: 'Berhasil',
+          message: '{{session('success')}}',
+          position: 'topRight'
+          });
+        </script>
+        @elseif(session('error'))
+        <script>
+          iziToast.error({
+          title: 'Gagal',
+          message: '{{session('error')}}',
+          position: 'topRight'
+          });
+        </script>
+        @endif
         @include('layouts.footer')
