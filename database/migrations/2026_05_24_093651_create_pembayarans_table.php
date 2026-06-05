@@ -13,6 +13,13 @@ return new class extends Migration
     {
         Schema::create('pembayarans', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('id_reservasi');
+            $table->decimal('total_awal', 10, 2);
+            $table->decimal('dp', 10, 2)->default(0);
+            $table->decimal('bayar', 10, 2)->default(0);
+            $table->decimal('kembali', 10, 2)->default(0);
+            $table->unsignedBigInteger('id_pelanggan');
+            $table->unsignedBigInteger('id_kasir')->nullable();
             $table->timestamps();
         });
     }
