@@ -9,6 +9,7 @@ use App\Http\Controllers\OrderController;
 use App\Http\Controllers\PembayaranController;
 use App\Http\Controllers\ReservasiController;
 use App\Http\Controllers\PesananController;
+use App\Http\Controllers\PesananSayaController;
 use App\Http\Controllers\ReservasiSayaController;
 use App\Http\Controllers\RiwayatController;
 
@@ -27,7 +28,18 @@ Route::resource('meja', MejaController::class);
 Route::resource('menu', MenuController::class);
 Route::resource('order', OrderController::class);
 Route::resource('pembayaran', PembayaranController::class);
-Route::resource('reservasi', ReservasiController::class);
+
+Route::middleware(['auth'])->prefix('reservasi')->name('reservasi.')->group(function () {
+    Route::get('/', [ReservasiController::class, 'index'])->name('index');
+    Route::post('/meja-tersedia', [ReservasiController::class, 'mejaTersedia'])->name('mejaTersedia');
+    Route::post('/pilih-meja', [ReservasiController::class, 'pilihMeja'])->name('pilihMeja');
+    Route::get('/pilih-menu', [ReservasiController::class, 'pilihMenu'])->name('pilihMenu');
+    Route::post('/keranjang/tambah', [ReservasiController::class, 'tambahKeranjang'])->name('tambahKeranjang');
+    Route::get('/keranjang', [ReservasiController::class, 'keranjang'])->name('keranjang');
+    Route::get('/keranjang/hapus/{id}', [ReservasiController::class, 'hapusItemKeranjang'])->name('hapusItem');
+    Route::get('/pembayaran', [ReservasiController::class, 'pembayaran'])->name('pembayaran');
+    Route::post('/proses-pembayaran', [ReservasiController::class, 'prosesPembayaran'])->name('prosesPembayaran');
+    });
+Route::get('saya', [ReservasiSayaController::class, 'index'])->name('saya');
 Route::resource('pesanan', PesananController::class);
-Route::resource('reservasi-saya', ReservasiSayaController::class);
 Route::resource('riwayat', RiwayatController::class);
