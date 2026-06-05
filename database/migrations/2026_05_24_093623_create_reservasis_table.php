@@ -20,6 +20,7 @@ return new class extends Migration
             $table->time('jam_selesai');
             $table->date('tanggal_reservasi');
             $table->string('bukti', 100);
+            $table->enum('status_reservasi', ['belum lunas', 'lunas'])->default('belum lunas');
             $table->timestamps();
         });
     }
