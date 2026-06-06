@@ -3,63 +3,40 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Models\Reservasi;
 use Illuminate\Http\Request;
 
 class RiwayatController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * Menampilkan riwayat transaksi yang sudah lunas.
      */
     public function index()
     {
-        //
-    }
+        $user = auth()->user();
+        $role = $user->role;
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-    }
+        // Base Query: Mengambil reservasi yang sudah LUNAS beserta relasinya
+        // Eager Loading mencegah N+1 Query Problem
+        $query = Reservasi::with(['user', 'meja', 'pembayaran.kasir'])
+            ->whereHas('pembayaran', function ($q) {
+                // Kondisi lunas: nilai 'bayar' sudah mencukupi atau menyamai 'total_awal'
+                $q->whereColumn('bayar', '>=', 'total_awal');
+            });
 
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
-    {
-        //
-    }
+        // Pengkondisian Khusus berdasarkan Role Akun
+        if ($role === 'pelanggan') {
+            // Pelanggan hanya bisa melihat riwayat miliknya sendiri
+            $query->where('id_pelanggan', $user->id);
+        } elseif ($role === 'kasir') {
+            // Kasir hanya melihat riwayat transaksi yang dieksekusi oleh dirinya sendiri
+            $query->whereHas('pembayaran', function ($q) use ($user) {
+                $q->where('id_kasir', $user->id);
+            });
+        }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
-    {
-        //
-    }
+        $riwayats = $query->orderBy('id', 'desc')->paginate(10);
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
-    {
-        //
+        return view('riwayat.index', compact('riwayats', 'role'));
     }
 }
