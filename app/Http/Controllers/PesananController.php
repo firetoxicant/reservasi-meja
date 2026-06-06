@@ -22,6 +22,7 @@ class PesananController extends Controller
        }
         // Mengambil data reservasi terbaru beserta relasi user, meja, dan pembayarannya
         $reservasis = Reservasi::with(['user', 'meja', 'pembayaran'])
+            ->whereIn('status_reservasi', ['belum lunas'])
             ->orderBy('id', 'desc')
             ->paginate(10);
 
