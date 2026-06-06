@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\MejaController;
@@ -40,6 +41,12 @@ Route::middleware(['auth'])->prefix('reservasi')->name('reservasi.')->group(func
     Route::get('/pembayaran', [ReservasiController::class, 'pembayaran'])->name('pembayaran');
     Route::post('/proses-pembayaran', [ReservasiController::class, 'prosesPembayaran'])->name('prosesPembayaran');
     });
+
+Route::middleware(['auth'])->prefix('pesanan')->name('pesanan.')->group(function () {
+    Route::get('/', [PesananController::class, 'index'])->name('index');
+    Route::get('/{id}/detail', [PesananController::class, 'detail'])->name('detail');
+    Route::get('/{id}/pelunasan', [PesananController::class, 'pelunasanForm'])->name('pelunasan');
+    Route::post('/{id}/pelunasan', [PesananController::class, 'prosesPelunasan'])->name('prosesPelunasan');
+});
 Route::get('saya', [ReservasiSayaController::class, 'index'])->name('saya');
-Route::resource('pesanan', PesananController::class);
 Route::resource('riwayat', RiwayatController::class);
