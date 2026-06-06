@@ -32,7 +32,11 @@ class Reservasi extends Model
     {
         return $this->belongsTo(User::class, 'id_pelanggan', 'id');
     }
-
+    
+    public function user(): BelongsTo
+    {
+        return $this->belongsTo(User::class, 'id_pelanggan', 'id');
+    }
     /**
      * Relasi balik ke Meja yang dipilih
      */
