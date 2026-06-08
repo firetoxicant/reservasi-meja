@@ -31,7 +31,7 @@ class RiwayatController extends Controller
         } elseif ($role === 'kasir') {
             // Kasir hanya melihat riwayat transaksi yang dieksekusi oleh dirinya sendiri
             $query->whereHas('pembayaran', function ($q) use ($user) {
-                $q->where('id_kasir', $user->id);
+                $q->where('id_kasir', $user->id); // Urutkan berdasarkan waktu pelunasan terbaru
             });
         }
 
