@@ -77,6 +77,22 @@
                 <span class="ml-4">Data Menu</span>
               </a>
             </li>
+            <li class="relative px-6 py-3">
+              <!-- Active items have the snippet below -->
+              @if(request()->is('user*'))
+              <span class="absolute inset-y-0 left-0 w-1 bg-yellow-400 rounded-tr-lg rounded-br-lg" aria-hidden="true"></span>
+              @endif
+              <!-- Add this classes to an active anchor (a tag) -->
+              <!-- text-gray-800 dark:text-gray-100 -->
+              <a class="@if(request()->is('user*'))
+                text-gray-800 dark:text-yellow-300
+                @endif
+                inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
+                href="{{ route('user.index') }}">
+                <i class="fas fa-users"></i>
+                <span class="ml-4">Data User</span>
+              </a>
+            </li>
               <li class="relative px-6 py-3">
                 <!-- Active items have the snippet below -->
                 @if(request()->is('pesanan*'))
@@ -112,16 +128,16 @@
             </li>
             <li class="relative px-6 py-3">
               <!-- Active items have the snippet below -->
-              @if(request()->is('reservasi-saya*'))
+              @if(request()->is('saya'))
               <span class="absolute inset-y-0 left-0 w-1 bg-yellow-400 rounded-tr-lg rounded-br-lg" aria-hidden="true"></span>
               @endif
               <!-- Add this classes to an active anchor (a tag) -->
               <!-- text-gray-800 dark:text-gray-100 -->
-              <a class="@if(request()->is('reservasi-saya*'))
+              <a class="@if(request()->is('saya'))
                 text-gray-800 dark:text-yellow-300
                 @endif
                 inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
-                href="{{ route('reservasi-saya.index') }}">
+                href="{{ route('saya') }}">
                 <i class="fas fa-ticket-alt"></i>
                 <span class="ml-4">Reservasi Saya</span>
               </a>
@@ -129,18 +145,18 @@
             <hr>
             <li class="relative px-6 py-3">
               <!-- Active items have the snippet below -->
-              @if(request()->is('riwayat*'))
+              @if(request()->is('laporan*'))
               <span class="absolute inset-y-0 left-0 w-1 bg-yellow-400 rounded-tr-lg rounded-br-lg" aria-hidden="true"></span>
               @endif
               <!-- Add this classes to an active anchor (a tag) -->
               <!-- text-gray-800 dark:text-gray-100 -->
-              <a class="@if(request()->is('riwayat*'))
+              <a class="@if(request()->is('laporan*'))
                 text-gray-800 dark:text-yellow-300
                 @endif
                 inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
-                href="{{ route('riwayat.index') }}">
-                <i class="fas fa-history"></i>
-                <span class="ml-4">Riwayat</span>
+                href="{{ route('laporan.index') }}">
+                <i class="fas fa-file"></i>
+                <span class="ml-4">Laporan</span>
               </a>
             </li>
           </ul>

@@ -18,7 +18,7 @@
                 {{-- Tombol Aksi Akhir Form --}}
                 <div class="flex items-center gap-3 pt-4 border-t border-gray-100">
                     <a href="{{ route('meja.index') }}" 
-                       class="border border-gray-300 hover:bg-gray-50 text-gray-700 font-medium px-6 py-2 rounded-md transition text-sm">
+                       class="border border-gray-300 bg-gray-300 text-gray-700 dark:text-dark hover:bg-yellow-400 font-medium px-6 py-2 rounded-md transition text-sm">
                         Kembali
                     </a>
                     <button type="submit" 

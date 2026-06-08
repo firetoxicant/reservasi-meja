@@ -18,6 +18,7 @@
     ></script>
     <script src="../../assets/js/init-alpine.js"></script>
     <script src="{{asset('assets/izitoast/js/iziToast.min.js')}}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   </head>
   <body>
     <div

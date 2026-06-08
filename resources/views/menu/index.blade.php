@@ -6,14 +6,6 @@
         Data Menu Makanan & Minuman
     </h2>
 
-    @if(session('success'))
-    <div class="px-4 py-3 mb-6 bg-green-300 rounded-lg shadow-md">
-        <p class="text-sm font-semibold text-white">
-            {{ session('success') }}
-        </p>
-    </div>
-    @endif
-
     <a href="{{ route('menu.create') }}" class="inline-flex items-center justify-center px-4 py-2 text-sm text-center font-medium leading-5 w-32 ml-auto mb-4 text-white transition-colors duration-150 bg-green-600 border border-transparent rounded-lg hover:bg-green-700 focus:outline-none shadow">
         <i class="fas fa-plus-square mr-2"></i> Tambah
     </a>
@@ -22,7 +14,7 @@
         <div class="w-full overflow-x-auto">
             <table class="w-full whitespace-no-wrap">
                 <thead>
-                    <tr class="text-xs font-semibold tracking-wide text-left text-gray-100 uppercase border-b dark:border-gray-700 bg-yellow-300 dark:text-gray-400 dark:bg-gray-800">
+                    <tr class="text-xs font-semibold tracking-wide text-left text-gray-100 uppercase border-b dark:border-gray-700 bg-yellow-400 dark:text-white dark:bg-gray-800">
                         <th class="px-4 py-3">No</th>
                         <th class="px-4 py-3">Nama Menu</th>
                         <th class="px-4 py-3">Kategori</th>
