@@ -13,6 +13,8 @@ use App\Http\Controllers\PesananController;
 use App\Http\Controllers\PesananSayaController;
 use App\Http\Controllers\ReservasiSayaController;
 use App\Http\Controllers\RiwayatController;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\LaporanController;
 
 Route::get('/', function () {
     return view('auth.login');
@@ -50,3 +52,6 @@ Route::middleware(['auth'])->prefix('pesanan')->name('pesanan.')->group(function
 });
 Route::get('saya', [ReservasiSayaController::class, 'index'])->name('saya');
 Route::resource('riwayat', RiwayatController::class);
+Route::resource('user', UserController::class);
+Route::get('laporan', [LaporanController::class, 'index'])->name('laporan.index');
+Route::get('laporan/export-pdf', [LaporanController::class, 'exportPdf'])->name('laporan.export');
