@@ -23,7 +23,7 @@ class PesananController extends Controller
         // Mengambil data reservasi terbaru beserta relasi user, meja, dan pembayarannya
         $reservasis = Reservasi::with(['user', 'meja', 'pembayaran'])
             ->whereIn('status_reservasi', ['belum lunas'])
-            ->orderBy('id', 'desc')
+            ->orderBy('tanggal_reservasi', 'asc')
             ->paginate(10);
 
         return view('pesanan.index', compact('reservasis'));
@@ -54,7 +54,8 @@ class PesananController extends Controller
             // Kolom 'bayar' kini diisi total penuh (DP + Sisa Pelunasan)
             $pembayaran->update([
                 'bayar'   => $pembayaran->total_awal, 
-                'kembali' => $kembalian
+                'kembali' => $kembalian,
+                'id_kasir' => auth()->id()
             ]);
 
             // Ubah status reservasi menjadi terkonfirmasi penuh/selesai
